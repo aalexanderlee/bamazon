@@ -58,13 +58,13 @@ function inquireThisId() {
 
 		]).then(function(answer) {
 
-			console.log("Answer: ", answer);
+			//console.log("Answer: ", answer);
 
 			var userId = answer.id;
-			console.log("Item ID: " , userId);
+			console.log("Chosen item id: " , userId);
 
 			var userQuant = answer.quant;
-			console.log("Stock Quantity: " , userQuant , "\n");
+			console.log("Chosen quantity from stock: " , userQuant , "\n");
 
 			connection.query("SELECT * FROM products WHERE ?", [{ item_id : answer.id }], function(err, res) {
 				if (err) throw err;				
@@ -96,8 +96,8 @@ function inquireThisId() {
 
 					connection.query("SELECT * FROM products", function(err, res) {
 
-						console.log("Here is the updated table: ");
-						console.log("--------------------------- \n");
+						console.log("Here is an updated inventory: ");
+						console.log("------------------------------- \n");
 						console.table(res);
 					});
 
