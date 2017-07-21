@@ -7,23 +7,13 @@ var connection = mysql.createConnection({
 	host: "localhost",
 	port: 3306,
 
-	user: "austin", //maybe change this to "austin"
+	user: "austin", 
 
-	password: "ucleagu8", //maybe change this to your actual password
+	password: "ucleagu8", 
 	database: "products_db" 
 
 });
 
-//Display this from mySQL file
-// function mockData() {
-// 	connection.query("INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Socks', 'Apparel', '15', '10')");
-// 	connection.query("INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('iPhone', 'Electronics', '600', '15')");
-// 	connection.query("INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Tent', 'Outdoors & Recreation', '200', '5')");
-// 	connection.query("INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Knife', 'Kitchen & Appliances', '100', '20')");
-// 	connection.query("INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Body Bag', 'Outdoors & Recreation', '75', '8')");
-// 	connection.query("INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Bleach', 'Household', '10', '13')");
-// 	connection.query("INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Pre-written alibi', 'Stationaries', '10', '30')");
-// }
 
 function renderTable() {
 	connection.connect(function(err) {
@@ -68,13 +58,13 @@ function inquireThisId() {
 
 		]).then(function(answer) {
 
-			// console.log("Answer: ", answer);
+			console.log("Answer: ", answer);
 
-			// var userId = answer.id;
-			// console.log("Item ID: " , userId);
+			var userId = answer.id;
+			console.log("Item ID: " , userId);
 
-			// var userQuant = answer.quant;
-			// console.log("Stock Quantity: " , userQuant , "\n");
+			var userQuant = answer.quant;
+			console.log("Stock Quantity: " , userQuant , "\n");
 
 			connection.query("SELECT * FROM products WHERE ?", [{ item_id : answer.id }], function(err, res) {
 				if (err) throw err;				
@@ -82,10 +72,10 @@ function inquireThisId() {
 				//return the item_id
 				console.table(res);
 				var current_quantity = res[0].stock_quantity;
-				console.log(current_quantity);
+				console.log("Current quantity in stock: " , current_quantity);
 				var price = res[0].price;
 				var remaining_quantity = current_quantity - answer.quant;
-				console.log(remaining_quantity);
+				console.log("Remaining quantity in stock: " , remaining_quantity);
 
 				if(current_quantity > answer.quant) {
 
@@ -115,20 +105,16 @@ function inquireThisId() {
 					console.log("Insufficient amounts, please try again!");
 				}
 
-				connection.end();
+			connection.end();
 
-				});
-			})
+			});
+		})
 
-			//if (parseQuant <= VALUE of stock_quantity in answer.id of products) {
-				//console.log("Insufficient quantity!")
-				//process.exit();
-			// compareId(parseId);
-			// compareStock(parseQuant);
-
-		//});
 }
 
+
+
+//Random Pseudo-coding comments:
 // function compareId(parseId) {
 // 	connection.query("SELECT * FROM products WHERE ?", { item_id : parseId }, function(err, data) {
 // 		if (err) throw err;
