@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS products_db;
 
 CREATE DATABASE products_db;
@@ -20,7 +19,9 @@ INSERT INTO products (product_name, department_name, price, stock_quantity, item
 INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Knife', 'Kitchen & Appliances', '100', '20', 4);
 INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Body Bag', 'Outdoors & Recreation', '75', '8', 5);
 INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Bleach', 'Household', '10', '13', 6);
-INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Pre-written alibi', 'Stationaries', '10', '30', 7);
-
+INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Pre-Written Alibi', 'Stationaries', '10', '30', 7);
+INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Fake ID Template', 'Stationaries', '70', '20', 8);
+INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('Shank', 'Kitchen & Appliances', '50', '40', 9);
+INSERT INTO products (product_name, department_name, price, stock_quantity, item_id) VALUES ('OJ', 'Food & Athletics', '10', '35', 10);
 
 SELECT * FROM products; 
