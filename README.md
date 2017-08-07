@@ -29,4 +29,4 @@ Points of Progression:
 
 Here is a working snippet of bamazonCustomer.js:
 
-![Alt text](/img/bamazonPicGif.gif?raw=true "bamazonCustomer.js GIF: ")
+![Alt text](/img/bamazonGif.gif?raw=true "bamazonCustomer.js GIF: ")
