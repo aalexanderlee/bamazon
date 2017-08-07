@@ -7,10 +7,10 @@ var connection = mysql.createConnection({
 	host: "localhost",
 	port: 3306,
 
-	user: "austin", 
+	user: "austin",
 
-	password: "ucleagu8", 
-	database: "products_db" 
+	password: "ucleagu8",
+	database: "products_db"
 
 });
 
@@ -28,7 +28,7 @@ function renderTable() {
 renderTable();
 
 
-function inquireThisId() {	
+function inquireThisId() {
 
 	inquirer.prompt([
 
@@ -67,8 +67,8 @@ function inquireThisId() {
 			console.log("Chosen quantity from stock: " , userQuant , "\n");
 
 			connection.query("SELECT * FROM products WHERE ?", [{ item_id : answer.id }], function(err, res) {
-				if (err) throw err;				
-				//grab the item_id from the table that matches 
+				if (err) throw err;
+				//grab the item_id from the table that matches
 				//return the item_id
 				console.table(res);
 				var current_quantity = res[0].stock_quantity;
@@ -87,7 +87,7 @@ function inquireThisId() {
                     remaining_quantity, answer.id
                     ],
 
-					// connection.query("UPDATE products SET stock_quantity=? WHERE item_id?", 
+					// connection.query("UPDATE products SET stock_quantity=? WHERE item_id?",
 					// 	[remaining_quantity, answer.id],
 
 						function(err, res){
@@ -119,7 +119,7 @@ function inquireThisId() {
 // 	connection.query("SELECT * FROM products WHERE ?", { item_id : parseId }, function(err, data) {
 // 		if (err) throw err;
 
-// 		//grab the item_id from the table that matches 
+// 		//grab the item_id from the table that matches
 // 		//return the item_id
 // 		console.log(data);
 // 	})
@@ -131,19 +131,19 @@ function inquireThisId() {
 // 		//grab the stock_quantity from table that matches parseQuant
 // 		//subtract parseQuant from stock_quantity value
 // 		console.log(data);
-// 	} 
+// 	}
 // }
-			
+
 // 			//if(parseInt(answer.quant) <= VALUE of stock_quantity in answer.id of products) {
-				
+
 				//subtract parseInt(answer.quant) from stock_quantity ---> (var remain = stock_quantity - parseInt(answer.quant));
-				
+
 				//connection.query("UPDATE in products (stock_quantity) WHERE (answer.id = item_id) and VALUE is (remain)");
-				
+
 				//multiply parseInt(answer.quant) to VALUE price in answer.id of products ---> (var costTot = price * parseInt(answer.quant))
-				
+
 				//connection.query("UPDATE in products (price) WHERE (answer.id = item_id) and VALUE is (costTOT)");
-				
+
 				//save the updated table to mysql and to the screen
 				//console.log this new table to the screen
 
@@ -158,11 +158,3 @@ function inquireThisId() {
 //}
 
 //connection.end();
-
-
-
-
-
-
-
-
